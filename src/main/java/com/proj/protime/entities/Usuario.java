@@ -34,6 +34,9 @@ public class Usuario implements Serializable{
 	@NotBlank
 	private String senha;
 	
+	@NotBlank
+	private String perfil;
+	
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
 	@CreationTimestamp
 	private LocalDateTime data_criacao;
@@ -98,8 +101,14 @@ public class Usuario implements Serializable{
 
 	public void setUltimo_login(LocalDateTime ultimo_login) {
 		this.ultimo_login = ultimo_login;
+	}
+
+	public String getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(String perfil) {
+		this.perfil = perfil;
 	}	
-	
-	
 	
 }
