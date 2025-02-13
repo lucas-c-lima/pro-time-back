@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.proj.protime.entities.enums.Perfil;
+import com.proj.protime.entities.enums.PerfilUsuario;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -38,7 +38,7 @@ public class Usuario implements Serializable{
 	private String senha;
 	
 	@NotBlank(message = "O perfil e obrigatorio")
-	private Perfil perfil;
+	private PerfilUsuario perfil;
 	
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
 	@CreationTimestamp
@@ -106,11 +106,11 @@ public class Usuario implements Serializable{
 		this.ultimo_login = ultimo_login;
 	}
 
-	public Perfil getPerfil() {
+	public PerfilUsuario getPerfil() {
 		return perfil;
 	}
 
-	public void setPerfil(Perfil perfil) {
+	public void setPerfil(PerfilUsuario perfil) {
 		this.perfil = perfil;
 	}	
 	
