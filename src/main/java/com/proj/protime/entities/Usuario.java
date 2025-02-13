@@ -3,11 +3,13 @@ package com.proj.protime.entities;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.proj.protime.entities.enums.Perfil;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,17 +27,18 @@ public class Usuario implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@NotBlank
+	@NotBlank(message = "O nome e obrigatorio")
 	private String nome;
 	
-	@NotBlank
+	@NotBlank(message = "O email e obrigatorio")
+	@Email(message = "O e-mail informado nao e valido")
 	private String email;
 	
-	@NotBlank
+	@NotBlank(message = "A senha e obrigatoria")
 	private String senha;
 	
-	@NotBlank
-	private String perfil;
+	@NotBlank(message = "O perfil e obrigatorio")
+	private Perfil perfil;
 	
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
 	@CreationTimestamp
@@ -103,11 +106,11 @@ public class Usuario implements Serializable{
 		this.ultimo_login = ultimo_login;
 	}
 
-	public String getPerfil() {
+	public Perfil getPerfil() {
 		return perfil;
 	}
 
-	public void setPerfil(String perfil) {
+	public void setPerfil(Perfil perfil) {
 		this.perfil = perfil;
 	}	
 	
