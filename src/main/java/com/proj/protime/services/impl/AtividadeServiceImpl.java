@@ -1,7 +1,10 @@
 package com.proj.protime.services.impl;
 
-import com.proj.protime.services.AtividadeService;
+import org.springframework.stereotype.Service;
 
+import com.proj.protime.service.AtividadeService;
+
+@Service
 public class AtividadeServiceImpl implements AtividadeService{
 
 }

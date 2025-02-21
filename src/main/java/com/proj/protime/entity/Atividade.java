@@ -1,4 +1,4 @@
-package com.proj.protime.entities;
+package com.proj.protime.entity;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -8,8 +8,7 @@ import javax.validation.constraints.NotBlank;
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.proj.protime.entities.enums.PrioridadeProjeto;
-import com.proj.protime.entities.enums.StatusProjeto;
+import com.proj.protime.entities.enums.StatusAtividade;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,11 +16,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "projetos")
-public class Projeto implements Serializable{
+@Table(name = "atividades")
+public class Atividade implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -29,10 +29,13 @@ public class Projeto implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@OneToOne
+	@JoinColumn(name = "id_projeto", referencedColumnName = "id", nullable = false)
+	private Projeto id_projeto;
+	
 	@NotBlank(message = "O nome e obrigatorio")
 	private String nome;
 	
-	@NotBlank
 	private String descricao;
 	
 	@NotBlank(message = "A data de inicio e obrigatoria")
@@ -44,9 +47,8 @@ public class Projeto implements Serializable{
 	private LocalDateTime data_fim;
 	
 	@NotBlank(message = "O status e obrigatorio")
-	private StatusProjeto status;
+	private StatusAtividade status;
 	
-	// TODO Verificar qual a relacao, se e 1:1 ou N:1
 	@ManyToOne
 	@JoinColumn(name = "id_usuario_responsavel", referencedColumnName = "id", nullable = false)
 	private Usuario id_usuario_responsavel;
@@ -55,24 +57,22 @@ public class Projeto implements Serializable{
 	@CreationTimestamp
 	private LocalDateTime data_criacao;
 	
-	@NotBlank(message = "A prioridade e obrigatorio")
-	private PrioridadeProjeto prioridade;
-	
-	public Projeto() {
+	public Atividade() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Projeto(String nome, String descricao, LocalDateTime data_inicio,
-			LocalDateTime data_fim, StatusProjeto status, Usuario id_usuario_responsavel,
-			PrioridadeProjeto prioridade) {
+	public Atividade(Projeto id_projeto, String nome, String descricao,
+			LocalDateTime data_inicio, LocalDateTime data_fim, StatusAtividade status, 
+			Usuario id_usuario_responsavel, LocalDateTime data_criacao) {
 		super();
+		this.id_projeto = id_projeto;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.data_inicio = data_inicio;
 		this.data_fim = data_fim;
 		this.status = status;
 		this.id_usuario_responsavel = id_usuario_responsavel;
-		this.prioridade = prioridade;
+		this.data_criacao = data_criacao;
 	}
 
 	public Integer getId() {
@@ -81,6 +81,14 @@ public class Projeto implements Serializable{
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Projeto getId_projeto() {
+		return id_projeto;
+	}
+
+	public void setId_projeto(Projeto id_projeto) {
+		this.id_projeto = id_projeto;
 	}
 
 	public String getNome() {
@@ -115,11 +123,11 @@ public class Projeto implements Serializable{
 		this.data_fim = data_fim;
 	}
 
-	public StatusProjeto getStatus() {
+	public StatusAtividade getStatus() {
 		return status;
 	}
 
-	public void setStatus(StatusProjeto status) {
+	public void setStatus(StatusAtividade status) {
 		this.status = status;
 	}
 
@@ -138,13 +146,7 @@ public class Projeto implements Serializable{
 	public void setData_criacao(LocalDateTime data_criacao) {
 		this.data_criacao = data_criacao;
 	}
-
-	public PrioridadeProjeto getPrioridade() {
-		return prioridade;
-	}
-
-	public void setPrioridade(PrioridadeProjeto prioridade) {
-		this.prioridade = prioridade;
-	}
+	
+	
 	
 }

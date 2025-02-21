@@ -1,4 +1,4 @@
-package com.proj.protime.entities;
+package com.proj.protime.entity;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;

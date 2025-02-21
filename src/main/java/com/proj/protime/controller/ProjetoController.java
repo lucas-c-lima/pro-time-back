@@ -1,4 +1,4 @@
-package controllers;
+package com.proj.protime.controller;
 
 import java.util.List;
 
@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.proj.protime.entities.Projeto;
-import com.proj.protime.services.ProjetoService;
+import com.proj.protime.entity.Projeto;
+import com.proj.protime.service.ProjetoService;
 
 @RestController
-@RequestMapping("/projeto")
+@RequestMapping("/projetos")
 public class ProjetoController {
 
 	@Autowired	

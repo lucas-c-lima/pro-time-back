@@ -1,4 +1,4 @@
-package controllers;
+package com.proj.protime.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

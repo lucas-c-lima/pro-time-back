@@ -1,8 +1,8 @@
-package com.proj.protime.repositories;
+package com.proj.protime.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.proj.protime.entities.Atividade;
+import com.proj.protime.entity.Atividade;
 
 public interface AtividadeRepository extends JpaRepository<Atividade, Integer>{
 

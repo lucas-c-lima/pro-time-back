@@ -1,4 +1,4 @@
-package controllers;
+package com.proj.protime.controller;
 
 import java.util.List;
 
@@ -7,8 +7,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.proj.protime.entities.Usuario;
-import com.proj.protime.services.UsuarioService;
+import com.proj.protime.entity.Usuario;
+import com.proj.protime.service.UsuarioService;
+
 import org.springframework.web.bind.annotation.GetMapping;
 
 
