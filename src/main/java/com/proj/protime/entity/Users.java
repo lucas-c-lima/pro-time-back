@@ -2,14 +2,19 @@ package com.proj.protime.entity;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.List;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.proj.protime.entities.enums.PerfilUsuario;
+import com.proj.protime.entities.enums.ProfileUser;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,109 +22,65 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-@Entity
 @Table(name = "usuarios")
-public class Users implements Serializable{
+@Entity
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(of = "id")
+public class Users implements UserDetails{
 	
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@NotBlank(message = "Name is required")
+	@NotBlank
 	@Column(name = "nome", nullable = false)
 	private String name;
 	
-	@NotBlank(message = "Email is required")
+	@NotBlank
 	@Email(message = "The provided email is invalid")
 	@Column(nullable = false)
 	private String email;
 	
-	@NotBlank(message = "Password is required")
+	@NotBlank
 	@Column(name = "senha", nullable = false)
 	private String password;
 	
-	@NotBlank(message = "Profile is required")
+	@NotBlank
 	@Column(name = "perfil", nullable = false)
-	private PerfilUsuario profile;
+	private ProfileUser profile;
 	
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
 	@CreationTimestamp
 	@Column(name = "data_criacao")
 	private LocalDateTime creationDate;
-
+ 
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
 	@Column(name = "ultimo_login")
 	private LocalDateTime lastLogin;
 
-	public Users() {
-		// TODO Auto-generated constructor stub
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		if (this.profile == ProfileUser.ADMIN) return List.of(new SimpleGrantedAuthority("P_ADMIN"), new SimpleGrantedAuthority("P_USUARIO"));
+		else return List.of(new SimpleGrantedAuthority("P_USUARIO"));
 	}
 
-	public Users(String name, String email, String senha, PerfilUsuario profile) {
-		super();
-		this.name = name;
-		this.email = email;
-		this.password = senha;
-		this.profile = profile;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
+	@Override
 	public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(String senha) {
-		this.password = senha;
+	@Override
+	public String getUsername() {
+		return email;
 	}
-
-	public LocalDateTime getCreationDate() {
-		return creationDate;
-	}
-
-	public void setCreationDate(LocalDateTime creationDate) {
-		this.creationDate = creationDate;
-	}
-
-	public LocalDateTime getLastLogin() {
-		return lastLogin;
-	}
-
-	public void setLastLogin(LocalDateTime lastLogin) {
-		this.lastLogin = lastLogin;
-	}
-
-	public PerfilUsuario getProfile() {
-		return profile;
-	}
-
-	public void setProfile(PerfilUsuario profile) {
-		this.profile = profile;
-	}	
 	
 }

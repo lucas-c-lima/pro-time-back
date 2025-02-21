@@ -49,7 +49,7 @@ public class Projeto implements Serializable{
 	// TODO Verificar qual a relacao, se e 1:1 ou N:1
 	@ManyToOne
 	@JoinColumn(name = "id_usuario_responsavel", referencedColumnName = "id", nullable = false)
-	private Usuario id_usuario_responsavel;
+	private Users id_usuario_responsavel;
 	
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
 	@CreationTimestamp
@@ -63,7 +63,7 @@ public class Projeto implements Serializable{
 	}
 
 	public Projeto(String nome, String descricao, LocalDateTime data_inicio,
-			LocalDateTime data_fim, StatusProjeto status, Usuario id_usuario_responsavel,
+			LocalDateTime data_fim, StatusProjeto status, Users id_usuario_responsavel,
 			PrioridadeProjeto prioridade) {
 		super();
 		this.nome = nome;
@@ -123,11 +123,11 @@ public class Projeto implements Serializable{
 		this.status = status;
 	}
 
-	public Usuario getId_usuario_responsavel() {
+	public Users getId_usuario_responsavel() {
 		return id_usuario_responsavel;
 	}
 
-	public void setId_usuario_responsavel(Usuario id_usuario_responsavel) {
+	public void setId_usuario_responsavel(Users id_usuario_responsavel) {
 		this.id_usuario_responsavel = id_usuario_responsavel;
 	}
 

@@ -51,7 +51,7 @@ public class Atividade implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name = "id_usuario_responsavel", referencedColumnName = "id", nullable = false)
-	private Usuario id_usuario_responsavel;
+	private Users id_usuario_responsavel;
 	
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
 	@CreationTimestamp
@@ -63,7 +63,7 @@ public class Atividade implements Serializable{
 
 	public Atividade(Projeto id_projeto, String nome, String descricao,
 			LocalDateTime data_inicio, LocalDateTime data_fim, StatusAtividade status, 
-			Usuario id_usuario_responsavel, LocalDateTime data_criacao) {
+			Users id_usuario_responsavel, LocalDateTime data_criacao) {
 		super();
 		this.id_projeto = id_projeto;
 		this.nome = nome;
@@ -131,11 +131,11 @@ public class Atividade implements Serializable{
 		this.status = status;
 	}
 
-	public Usuario getId_usuario_responsavel() {
+	public Users getId_usuario_responsavel() {
 		return id_usuario_responsavel;
 	}
 
-	public void setId_usuario_responsavel(Usuario id_usuario_responsavel) {
+	public void setId_usuario_responsavel(Users id_usuario_responsavel) {
 		this.id_usuario_responsavel = id_usuario_responsavel;
 	}
 
