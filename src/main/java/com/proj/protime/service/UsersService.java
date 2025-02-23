@@ -12,7 +12,5 @@ public interface UsersService {
 	public List<Users> getAllUsers();
 	
 	public Users getUserById(Integer id);
-	
-	public Users createUser(Users user);
 
 }

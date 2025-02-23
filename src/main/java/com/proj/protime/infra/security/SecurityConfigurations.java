@@ -22,9 +22,11 @@ public class SecurityConfigurations {
 		return httpSecurity
 				.csrf(csrf -> csrf.disable())
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-				// Necessário token e ser admin para acessar add-user
 				.authorizeHttpRequests(authorize -> authorize
-						.requestMatchers(HttpMethod.POST, "/add-user").hasRole("ADMIN")
+						.requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
+						.requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
+						.requestMatchers(HttpMethod.GET, "/auth/teste").permitAll()
+						.requestMatchers(HttpMethod.POST, "/register").hasRole("ADMIN")
 						.anyRequest().authenticated()
 				)
 				.build();

@@ -1,4 +1,4 @@
-package com.proj.protime.entities.enums;
+package com.proj.protime.entity.enums;
 
 public enum PrioridadeProjeto {
 	ALTA,

@@ -1,6 +1,5 @@
 package com.proj.protime.entity;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
@@ -14,7 +13,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.proj.protime.entities.enums.ProfileUser;
+import com.proj.protime.entity.enums.ProfileUser;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -67,6 +66,13 @@ public class Users implements UserDetails{
 	@Column(name = "ultimo_login")
 	private LocalDateTime lastLogin;
 
+	public Users(@NotBlank String name, @NotBlank String email, @NotBlank String password, ProfileUser profile) {
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.profile = profile;
+	}
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		if (this.profile == ProfileUser.ADMIN) return List.of(new SimpleGrantedAuthority("P_ADMIN"), new SimpleGrantedAuthority("P_USUARIO"));

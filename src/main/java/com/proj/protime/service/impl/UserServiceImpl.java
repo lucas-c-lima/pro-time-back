@@ -1,4 +1,4 @@
-package com.proj.protime.services.impl;
+package com.proj.protime.service.impl;
 
 import java.util.List;
 
@@ -26,9 +26,4 @@ public class UserServiceImpl implements UsersService{
 		return usersRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
 	}
 	
-	// ------ POSTs ------
-	@Override
-	public Users createUser(Users user) {
-		return usersRepository.save(user);
-	}
 }

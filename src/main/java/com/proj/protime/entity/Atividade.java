@@ -8,7 +8,7 @@ import javax.validation.constraints.NotBlank;
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.proj.protime.entities.enums.StatusAtividade;
+import com.proj.protime.entity.enums.StatusAtividade;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

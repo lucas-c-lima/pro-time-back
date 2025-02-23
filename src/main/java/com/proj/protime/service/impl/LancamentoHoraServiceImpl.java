@@ -1,4 +1,4 @@
-package com.proj.protime.services.impl;
+package com.proj.protime.service.impl;
 
 import java.util.List;
 
