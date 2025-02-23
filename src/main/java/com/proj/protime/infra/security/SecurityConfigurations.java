@@ -3,6 +3,7 @@ package com.proj.protime.infra.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -32,8 +33,8 @@ public class SecurityConfigurations {
 				.authorizeHttpRequests(authorize -> authorize						
 						.requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll() // SWAGGER
 						.requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
-						.requestMatchers(HttpMethod.POST, "/auth/register").hasRole(ProfileUser.ADMIN.getProfile())
-						.requestMatchers("/users/**").permitAll()
+						.requestMatchers(HttpMethod.POST, "/auth/register").hasRole(ProfileUser.ADMIN.name())
+//						.requestMatchers("/users/**").permitAll()
 						.anyRequest().authenticated()
 				)
 				.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)

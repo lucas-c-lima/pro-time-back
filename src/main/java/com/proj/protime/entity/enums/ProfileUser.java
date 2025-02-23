@@ -1,16 +1,18 @@
 package com.proj.protime.entity.enums;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 public enum ProfileUser {
-	ADMIN("admin"),
-    USUARIO("usuario");
-	
-	private String profile;
-	
-	ProfileUser(String profile) {
-		this.profile = profile;
-	}
-	
-	public String getProfile() {
-		return profile;
+	ADMIN,
+	USUARIO;
+
+	@JsonCreator
+	public static ProfileUser getProfileUser(String profileUser) {
+		if (ADMIN.name().equals(profileUser)) {
+			return ADMIN;
+		} else if (USUARIO.name().equals(profileUser)) {
+			return USUARIO;
+		}
+		return null;
 	}
 }

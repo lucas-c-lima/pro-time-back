@@ -25,10 +25,10 @@ import jakarta.persistence.Table;
 
 @Table(name = "usuarios")
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+//@Getter
+//@Setter
+//@NoArgsConstructor
+//@AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Users implements UserDetails{
 	
@@ -88,5 +88,70 @@ public class Users implements UserDetails{
 	@Override
 	public String getUsername() {
 		return email;
+	}
+
+	public Users() {
+	}
+
+	public Users(Integer id, String name, String email, String password, ProfileUser profile, LocalDateTime creationDate, LocalDateTime lastLogin) {
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.profile = profile;
+		this.creationDate = creationDate;
+		this.lastLogin = lastLogin;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public ProfileUser getProfile() {
+		return profile;
+	}
+
+	public void setProfile(ProfileUser profile) {
+		this.profile = profile;
+	}
+
+	public LocalDateTime getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(LocalDateTime creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public LocalDateTime getLastLogin() {
+		return lastLogin;
+	}
+
+	public void setLastLogin(LocalDateTime lastLogin) {
+		this.lastLogin = lastLogin;
 	}
 }
