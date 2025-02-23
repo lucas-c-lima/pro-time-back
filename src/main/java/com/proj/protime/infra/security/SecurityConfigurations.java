@@ -33,7 +33,7 @@ public class SecurityConfigurations {
 						.requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll() // SWAGGER
 						.requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
 						.requestMatchers(HttpMethod.POST, "/auth/register").hasRole(ProfileUser.ADMIN.getProfile())
-						//.requestMatchers("/users/**").authenticated() //trocar para admin depois
+						.requestMatchers("/users/**").permitAll()
 						.anyRequest().authenticated()
 				)
 				.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
