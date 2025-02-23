@@ -29,14 +29,16 @@ public class AuthenticationController {
 	private UsersRepository usersRepository;
 	
 	@PostMapping("/login")
-	public ResponseEntity<?> login(@RequestBody @Valid AuthenticationDTO data) {
-	
+	public ResponseEntity<?> login(
+			@RequestBody @Valid AuthenticationDTO data
+	) {
+
 		// recebe login/senha
-		var userPassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
-		
+		var userPassword = new UsernamePasswordAuthenticationToken(data.email(), data.password());
+
 		// verifica no banco se existem
 		var auth = this.authenticationManager.authenticate(userPassword);
-	
+		System.out.println(auth);
 		return ResponseEntity.ok().build();
 	}
 		

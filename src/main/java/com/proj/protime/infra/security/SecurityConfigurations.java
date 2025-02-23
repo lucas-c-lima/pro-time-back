@@ -42,6 +42,7 @@ public class SecurityConfigurations {
 	}
 	
 	// criptografa senha antes de enviar pro banco
+	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}

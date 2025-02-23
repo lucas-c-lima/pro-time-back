@@ -66,6 +66,9 @@ public class Users implements UserDetails{
 	@Column(name = "ultimo_login")
 	private LocalDateTime lastLogin;
 
+	// Adicionado pois o JPA não permitia o login sem um construtor vazio
+	public Users() {}
+
 	public Users(@NotBlank String name, @NotBlank String email, @NotBlank String password, ProfileUser profile) {
 		this.name = name;
 		this.email = email;
