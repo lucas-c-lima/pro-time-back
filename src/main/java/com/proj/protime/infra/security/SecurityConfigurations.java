@@ -12,6 +12,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.proj.protime.entity.enums.ProfileUser;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfigurations {
@@ -23,11 +25,11 @@ public class SecurityConfigurations {
 				.csrf(csrf -> csrf.disable())
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.authorizeHttpRequests(authorize -> authorize						
-						.requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
+						.requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll() // SWAGGER
 						.requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
 						.requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
 						.requestMatchers(HttpMethod.GET, "/auth/teste").permitAll()
-						.requestMatchers(HttpMethod.POST, "/register").hasRole("ADMIN")
+						.requestMatchers(HttpMethod.POST, "/register").hasRole(ProfileUser.ADMIN.getProfile())
 						.anyRequest().authenticated()
 				)
 				.build();

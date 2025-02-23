@@ -45,13 +45,16 @@ public class AuthenticationController {
 			@RequestBody @Valid RegisterDTO data
 			) {
 				
-		if(this.usersRepository.findByEmail(data.email()) != null) return ResponseEntity.badRequest().build();
+		if(this.usersRepository.findByEmail(data.email()) != null) {
+			return ResponseEntity.badRequest().build();
+		}
 		
 		String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
 		Users newUser = new Users(data.name(), data.email(), encryptedPassword, data.profile());
 		
 		this.usersRepository.save(newUser);
 		
+//		return ResponseEntity.ok(new UsuarioDTO(newUser));
 		return ResponseEntity.ok().build();
 	}
 	
