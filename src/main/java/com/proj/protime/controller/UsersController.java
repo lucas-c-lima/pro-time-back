@@ -3,6 +3,7 @@ package com.proj.protime.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.proj.protime.entity.dto.UsersDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -28,8 +29,9 @@ public class UsersController {
 	private UsersService usersService;
 
 	@GetMapping
-	public ResponseEntity<List<Users>> getAllUsers(){
-		List<Users> users = usersService.getAllUsers();
+	public ResponseEntity<List<UsersDTO>> getAllUsers(){
+		System.out.println("Get all users");
+		List<UsersDTO> users = usersService.getAllUsers();
 		return ResponseEntity.ok().body(users);
 	}
 	

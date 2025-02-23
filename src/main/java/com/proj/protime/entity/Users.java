@@ -22,10 +22,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Table(name = "usuarios")
 @Entity
@@ -68,9 +64,6 @@ public class Users implements UserDetails{
 	@Column(name = "ultimo_login")
 	private LocalDateTime lastLogin;
 
-	// Adicionado pois o JPA não permitia o login sem um construtor vazio
-	public Users() {}
-
 	public Users(@NotBlank String name, @NotBlank String email, @NotBlank String password, ProfileUser profile) {
 		this.name = name;
 		this.email = email;
@@ -80,8 +73,11 @@ public class Users implements UserDetails{
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		if (this.profile == ProfileUser.ADMIN) return List.of(new SimpleGrantedAuthority("P_ADMIN"), new SimpleGrantedAuthority("P_USUARIO"));
-		else return List.of(new SimpleGrantedAuthority("P_USUARIO"));
+		if (this.profile == ProfileUser.ADMIN) {
+			return List.of(new SimpleGrantedAuthority("ADMIN"),
+					new SimpleGrantedAuthority("USUARIO"));
+		}
+		else return List.of(new SimpleGrantedAuthority("USUARIO"));
 	}
 
 	@Override
@@ -93,5 +89,4 @@ public class Users implements UserDetails{
 	public String getUsername() {
 		return email;
 	}
-	
 }

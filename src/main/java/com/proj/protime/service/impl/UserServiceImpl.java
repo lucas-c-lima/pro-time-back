@@ -2,6 +2,7 @@ package com.proj.protime.service.impl;
 
 import java.util.List;
 
+import com.proj.protime.entity.dto.UsersDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +17,8 @@ public class UserServiceImpl implements UsersService{
 	private UsersRepository usersRepository;
 
 	@Override
-	public List<Users> getAllUsers() {
-		return usersRepository.findAll();
+	public List<UsersDTO> getAllUsers() {
+		return usersRepository.findAll().stream().map(UsersDTO::new).toList();
 	}
 	
 	@Override
