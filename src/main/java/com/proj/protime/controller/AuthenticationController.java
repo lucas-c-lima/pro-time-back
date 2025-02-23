@@ -7,6 +7,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,11 +16,7 @@ import com.proj.protime.entity.dto.AuthenticationDTO;
 import com.proj.protime.entity.dto.RegisterDTO;
 import com.proj.protime.repository.UsersRepository;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import jakarta.validation.Valid;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @RestController
 @RequestMapping("/auth")
@@ -42,9 +39,7 @@ public class AuthenticationController {
 	
 		return ResponseEntity.ok().build();
 	}
-	
-	private static final Logger logger = LoggerFactory.getLogger(AuthenticationController.class);
-	
+		
 	@PostMapping("/register")
 	public ResponseEntity<?> register(
 			@RequestBody @Valid RegisterDTO data
