@@ -1,5 +1,7 @@
 package com.proj.protime.controller;
 
+import com.proj.protime.entity.dto.LoginResponseDTO;
+import com.proj.protime.infra.security.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -27,19 +29,21 @@ public class AuthenticationController {
 	
 	@Autowired
 	private UsersRepository usersRepository;
+
+	@Autowired
+	private TokenService tokenService;
 	
 	@PostMapping("/login")
 	public ResponseEntity<?> login(
 			@RequestBody @Valid AuthenticationDTO data
 	) {
+		var userPassword = new UsernamePasswordAuthenticationToken(data.email(), data.password()); // cria um token com email e senha
 
-		// recebe login/senha
-		var userPassword = new UsernamePasswordAuthenticationToken(data.email(), data.password());
+		var auth = this.authenticationManager.authenticate(userPassword); // autentica o token
 
-		// verifica no banco se existem
-		var auth = this.authenticationManager.authenticate(userPassword);
-		System.out.println(auth);
-		return ResponseEntity.ok().build();
+		var token = tokenService.generateToken((Users) auth.getPrincipal()); // gera um token
+
+		return ResponseEntity.ok(new LoginResponseDTO(token)); // retorna o token
 	}
 		
 	@PostMapping("/register")
