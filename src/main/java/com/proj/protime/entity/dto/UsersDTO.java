@@ -12,6 +12,7 @@ public record UsersDTO(
         Integer id,
         String name,
         String email,
+        String password,
         ProfileUser profile,
         @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss") LocalDateTime creationDate,
         @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss") LocalDateTime lastLogin
@@ -21,6 +22,7 @@ public record UsersDTO(
                 user.getId(),
                 user.getName(),
                 user.getEmail(),
+                user.getPassword(),
                 user.getProfile(),
                 user.getCreationDate(),
                 user.getLastLogin()

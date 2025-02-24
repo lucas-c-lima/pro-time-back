@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.proj.protime.entity.dto.UsersDTO;
+import com.proj.protime.entity.dto.UsersDTOPut;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -38,7 +40,11 @@ public class UsersController {
 	public ResponseEntity<List<UsersDTO>> findUserByName(@RequestParam String valor){
 		List<UsersDTO> user = usersService.findUserByName(valor);
 		return ResponseEntity.ok().body(user);
+	}
 
+	@PutMapping("/{id}")
+	public ResponseEntity<UsersDTO> updateUser(@PathVariable Integer id, @Valid @RequestBody UsersDTOPut user){
+		return ResponseEntity.ok(usersService.updateUser(id, user));
 	}
 
 }
