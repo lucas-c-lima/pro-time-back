@@ -11,7 +11,9 @@ import com.proj.protime.entity.Users;
 public interface UsersService {
 	
 	List<UsersDTO> getAllUsers();
-	
-	Users getUserById(Integer id);
+
+	UsersDTO findUserById(Integer id);
+
+	List<UsersDTO> findUserByName(String valor);
 
 }

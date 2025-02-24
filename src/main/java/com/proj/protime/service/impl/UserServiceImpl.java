@@ -22,8 +22,15 @@ public class UserServiceImpl implements UsersService{
 	}
 	
 	@Override
-	public Users getUserById(Integer id) {
-		return usersRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
+	public UsersDTO findUserById(Integer id) {
+		Users user = usersRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
+		return new UsersDTO(user);
 	}
-	
+
+	@Override
+	public List<UsersDTO> findUserByName(String valor) {
+		return usersRepository.findUserByNameContaining(valor).stream().map(UsersDTO::new).toList();
+	}
+
+
 }
