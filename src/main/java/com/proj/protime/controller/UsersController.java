@@ -30,7 +30,6 @@ public class UsersController {
 
 	@GetMapping
 	public ResponseEntity<List<UsersDTO>> getAllUsers(){
-		System.out.println("Get all users");
 		List<UsersDTO> users = usersService.getAllUsers();
 		return ResponseEntity.ok().body(users);
 	}

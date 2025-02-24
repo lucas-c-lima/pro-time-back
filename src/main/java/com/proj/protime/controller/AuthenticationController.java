@@ -51,11 +51,11 @@ public class AuthenticationController {
 	public ResponseEntity<UsersDTO> register(
 			@RequestBody @Valid RegisterDTO data
 			) {
-				
 		if(this.usersRepository.findByEmail(data.email()) != null) {
 			return ResponseEntity.badRequest().build();
 		}
-		
+
+
 		String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
 		Users newUser = new Users(data.name(), data.email(), encryptedPassword, data.profile());
 		

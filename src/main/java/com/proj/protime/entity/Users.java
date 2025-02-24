@@ -25,10 +25,6 @@ import jakarta.persistence.Table;
 
 @Table(name = "usuarios")
 @Entity
-//@Getter
-//@Setter
-//@NoArgsConstructor
-//@AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Users implements UserDetails{
 	
@@ -74,10 +70,10 @@ public class Users implements UserDetails{
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		if (this.profile == ProfileUser.ADMIN) {
-			return List.of(new SimpleGrantedAuthority("ADMIN"),
-					new SimpleGrantedAuthority("USUARIO"));
+			return List.of(new SimpleGrantedAuthority(ProfileUser.ADMIN.name()),
+					new SimpleGrantedAuthority(ProfileUser.USUARIO.name()));
 		}
-		else return List.of(new SimpleGrantedAuthority("USUARIO"));
+		else return List.of(new SimpleGrantedAuthority(ProfileUser.USUARIO.name()));
 	}
 
 	@Override

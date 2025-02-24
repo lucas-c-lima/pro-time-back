@@ -30,10 +30,10 @@ public class SecurityConfigurations {
 		return httpSecurity
 				.csrf(csrf -> csrf.disable())
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-				.authorizeHttpRequests(authorize -> authorize						
+				.authorizeHttpRequests(authorize -> authorize
 						.requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll() // SWAGGER
 						.requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
-						.requestMatchers(HttpMethod.POST, "/auth/register").hasRole(ProfileUser.ADMIN.name())
+						.requestMatchers(HttpMethod.POST, "/auth/register").hasAuthority(ProfileUser.ADMIN.name())
 //						.requestMatchers("/users/**").permitAll()
 						.anyRequest().authenticated()
 				)
