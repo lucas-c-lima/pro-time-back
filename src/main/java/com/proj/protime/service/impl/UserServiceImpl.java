@@ -6,6 +6,7 @@ import com.proj.protime.entity.dto.UsersDTO;
 import com.proj.protime.entity.dto.UsersDTOPut;
 import com.proj.protime.entity.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.proj.protime.entity.Users;
@@ -46,5 +47,14 @@ public class UserServiceImpl implements UsersService{
 
 		Users saved = usersRepository.save(current);
 		return UserMapper.INSTANCE.toUsersDTOPut(saved);
+	}
+
+	@Override
+	public ResponseEntity<Void> deleteUser(Integer id) {
+		return usersRepository.findById(id)
+			.map(userFound -> {
+				usersRepository.deleteById(id);
+				return ResponseEntity.noContent().<Void>build();
+			}).orElseThrow(() -> new RuntimeException("User not found"));
 	}
 }

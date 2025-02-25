@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.proj.protime.entity.dto.UsersDTO;
 import com.proj.protime.entity.dto.UsersDTOPut;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.proj.protime.entity.Users;
@@ -19,4 +20,5 @@ public interface UsersService {
 
 	UsersDTO updateUser(Integer id, UsersDTOPut user);
 
+	ResponseEntity<Void> deleteUser(Integer id);
 }

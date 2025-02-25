@@ -47,4 +47,11 @@ public class UsersController {
 		return ResponseEntity.ok(usersService.updateUser(id, user));
 	}
 
+	// TODO implementar soft delete!!!!
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> deleteUser(@PathVariable Integer id){
+		usersService.deleteUser(id);
+		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+	}
+
 }
