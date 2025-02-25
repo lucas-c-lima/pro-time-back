@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 
 import javax.validation.constraints.NotBlank;
 
+import com.proj.protime.entity.dto.users.UsersDTO;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -38,7 +39,7 @@ public class Projects implements Serializable{
 	@NotBlank
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
 	@Column(name = "data_fim")
-	private LocalDateTime data_fim;
+	private LocalDateTime endDate;
 
 	@NotBlank
 	private ProjectStatus status;
@@ -62,16 +63,25 @@ public class Projects implements Serializable{
 	}
 
 	public Projects(String name, String description, LocalDateTime startDate,
-					LocalDateTime data_fim, ProjectStatus status, Users idResponsableUser,
+					LocalDateTime endDate, ProjectStatus status, Users idResponsableUser,
 					ProjectPriority priority) {
 		super();
 		this.name = name;
 		this.description = description;
 		this.startDate = startDate;
-		this.data_fim = data_fim;
+		this.endDate = endDate;
 		this.status = status;
 		this.idResponsableUser = idResponsableUser;
 		this.priority = priority;
+	}
+
+	public Projects(String name,
+					String description,
+					LocalDateTime startDate,
+					LocalDateTime endDate,
+					ProjectStatus status,
+					UsersDTO usersDTO,
+					ProjectPriority priority) {
 	}
 
 	public Integer getId() {
@@ -106,12 +116,12 @@ public class Projects implements Serializable{
 		this.startDate = startDate;
 	}
 
-	public LocalDateTime getData_fim() {
-		return data_fim;
+	public LocalDateTime getEndDate() {
+		return endDate;
 	}
 
-	public void setData_fim(LocalDateTime data_fim) {
-		this.data_fim = data_fim;
+	public void setEndDate(LocalDateTime endDate) {
+		this.endDate = endDate;
 	}
 
 	public ProjectStatus getStatus() {
