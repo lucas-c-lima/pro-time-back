@@ -1,7 +1,7 @@
 package com.proj.protime.controller;
 
-import com.proj.protime.entity.dto.LoginResponseDTO;
-import com.proj.protime.entity.dto.UsersDTO;
+import com.proj.protime.entity.dto.auth.LoginResponseDTO;
+import com.proj.protime.entity.dto.users.UsersDTO;
 import com.proj.protime.infra.security.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proj.protime.entity.Users;
-import com.proj.protime.entity.dto.AuthenticationDTO;
-import com.proj.protime.entity.dto.RegisterDTO;
+import com.proj.protime.entity.dto.auth.AuthenticationDTO;
+import com.proj.protime.entity.dto.auth.RegisterDTO;
 import com.proj.protime.repository.UsersRepository;
 
 import jakarta.validation.Valid;
@@ -33,7 +33,8 @@ public class AuthenticationController {
 
 	@Autowired
 	private TokenService tokenService;
-	
+
+	// TODO FAZER ELE ALTERAR O ULTIMO LOGIN QUANDO LOGAR
 	@PostMapping("/login")
 	public ResponseEntity<LoginResponseDTO> login(
 			@RequestBody @Valid AuthenticationDTO data
@@ -63,9 +64,5 @@ public class AuthenticationController {
 
 		return ResponseEntity.ok(new UsersDTO(newUser));
 	}
-	
-	@GetMapping("/teste")
-	public String teste() {
-		return "Teste de retorno!";
-	}
+
 }

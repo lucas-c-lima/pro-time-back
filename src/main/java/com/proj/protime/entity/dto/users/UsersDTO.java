@@ -1,4 +1,4 @@
-package com.proj.protime.entity.dto;
+package com.proj.protime.entity.dto.users;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.proj.protime.entity.Users;

@@ -31,7 +31,7 @@ public class Atividade implements Serializable{
 	
 	@OneToOne
 	@JoinColumn(name = "id_projeto", referencedColumnName = "id", nullable = false)
-	private Projeto id_projeto;
+	private Projects id_projects;
 	
 	@NotBlank(message = "O nome e obrigatorio")
 	private String nome;
@@ -61,11 +61,11 @@ public class Atividade implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Atividade(Projeto id_projeto, String nome, String descricao,
-			LocalDateTime data_inicio, LocalDateTime data_fim, StatusAtividade status, 
-			Users id_usuario_responsavel, LocalDateTime data_criacao) {
+	public Atividade(Projects id_projects, String nome, String descricao,
+					 LocalDateTime data_inicio, LocalDateTime data_fim, StatusAtividade status,
+					 Users id_usuario_responsavel, LocalDateTime data_criacao) {
 		super();
-		this.id_projeto = id_projeto;
+		this.id_projects = id_projects;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.data_inicio = data_inicio;
@@ -83,12 +83,12 @@ public class Atividade implements Serializable{
 		this.id = id;
 	}
 
-	public Projeto getId_projeto() {
-		return id_projeto;
+	public Projects getId_projeto() {
+		return id_projects;
 	}
 
-	public void setId_projeto(Projeto id_projeto) {
-		this.id_projeto = id_projeto;
+	public void setId_projeto(Projects id_projects) {
+		this.id_projects = id_projects;
 	}
 
 	public String getNome() {

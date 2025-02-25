@@ -2,12 +2,10 @@ package com.proj.protime.service;
 
 import java.util.List;
 
-import com.proj.protime.entity.dto.UsersDTO;
-import com.proj.protime.entity.dto.UsersDTOPut;
+import com.proj.protime.entity.dto.users.UsersDTO;
+import com.proj.protime.entity.dto.users.UsersDTOPut;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import com.proj.protime.entity.Users;
 
 @Service
 public interface UsersService {

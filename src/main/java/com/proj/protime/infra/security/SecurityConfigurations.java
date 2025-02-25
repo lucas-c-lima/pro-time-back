@@ -25,6 +25,7 @@ public class SecurityConfigurations {
 	SecurityFilter securityFilter;
 
 	//Configuração para liberação de autenticação (Não armazena nada, apenas passa o token)
+	//TODO após implementação das saídas, verificar quem pode acessar oq
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
 		return httpSecurity

@@ -1,4 +1,4 @@
-package com.proj.protime.entity.dto;
+package com.proj.protime.entity.dto.auth;
 
 import com.proj.protime.entity.enums.ProfileUser;
 

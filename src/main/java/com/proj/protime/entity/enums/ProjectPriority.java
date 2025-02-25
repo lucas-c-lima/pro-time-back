@@ -1,6 +1,6 @@
 package com.proj.protime.entity.enums;
 
-public enum PrioridadeProjeto {
+public enum ProjectPriority {
 	ALTA,
 	MEDIA,
 	BAIXA

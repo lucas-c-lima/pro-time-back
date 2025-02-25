@@ -2,8 +2,8 @@ package com.proj.protime.service.impl;
 
 import java.util.List;
 
-import com.proj.protime.entity.dto.UsersDTO;
-import com.proj.protime.entity.dto.UsersDTOPut;
+import com.proj.protime.entity.dto.users.UsersDTO;
+import com.proj.protime.entity.dto.users.UsersDTOPut;
 import com.proj.protime.entity.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
