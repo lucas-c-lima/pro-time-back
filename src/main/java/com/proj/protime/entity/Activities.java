@@ -5,17 +5,15 @@ import java.time.LocalDateTime;
 
 import javax.validation.constraints.NotBlank;
 
-import com.proj.protime.entity.dto.users.UsersDTO;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.proj.protime.entity.enums.ProjectPriority;
-import com.proj.protime.entity.enums.ProjectStatus;
+import com.proj.protime.entity.enums.ActivityStatus;
 
 @Entity
-@Table(name = "projeto")
-public class Projects implements Serializable{
+@Table(name = "atividades")
+public class Activities implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -23,28 +21,30 @@ public class Projects implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@OneToOne
+	@JoinColumn(name = "id_projeto", referencedColumnName = "id", nullable = false)
+	private Projects id_projects;
+	
 	@NotBlank
 	@Column(name = "nome" ,nullable = false)
 	private String name;
-	
-	@NotBlank
+
 	@Column(name = "descricao", nullable = false)
 	private String description;
-
+	
 	@NotBlank
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
 	@Column(name = "data_inicio")
 	private LocalDateTime startDate;
-
+	
 	@NotBlank
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
 	@Column(name = "data_fim")
 	private LocalDateTime endDate;
-
-	@NotBlank
-	private ProjectStatus status;
 	
-	// TODO Verificar qual a relacao, se e 1:1 ou N:1
+	@NotBlank
+	private ActivityStatus status;
+	
 	@ManyToOne
 	@JoinColumn(name = "id_usuario_responsavel", referencedColumnName = "id", nullable = false)
 	private Users idResponsableUser;
@@ -54,25 +54,22 @@ public class Projects implements Serializable{
 	@Column(name = "data_criacao")
 	private LocalDateTime creationDate;
 	
-	@NotBlank
-	@Column(name = "prioridade", nullable = false)
-	private ProjectPriority priority;
-	
-	public Projects() {
+	public Activities() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Projects(String name, String description, LocalDateTime startDate,
-					LocalDateTime endDate, ProjectStatus status, Users idResponsableUser,
-					ProjectPriority priority) {
+	public Activities( String name, String description,
+					  LocalDateTime startDate, LocalDateTime endDate, ActivityStatus status,
+					   Projects idProject,
+					   Users idResponsableUser) {
 		super();
 		this.name = name;
 		this.description = description;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.status = status;
+		this.id_projects = idProject;
 		this.idResponsableUser = idResponsableUser;
-		this.priority = priority;
 	}
 
 	public Integer getId() {
@@ -81,6 +78,14 @@ public class Projects implements Serializable{
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Projects getIdProjects() {
+		return id_projects;
+	}
+
+	public void setIdProjects(Projects id_projects) {
+		this.id_projects = id_projects;
 	}
 
 	public String getName() {
@@ -115,11 +120,11 @@ public class Projects implements Serializable{
 		this.endDate = endDate;
 	}
 
-	public ProjectStatus getStatus() {
+	public ActivityStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(ProjectStatus status) {
+	public void setStatus(ActivityStatus status) {
 		this.status = status;
 	}
 
@@ -138,13 +143,7 @@ public class Projects implements Serializable{
 	public void setCreationDate(LocalDateTime creationDate) {
 		this.creationDate = creationDate;
 	}
-
-	public ProjectPriority getPriority() {
-		return priority;
-	}
-
-	public void setPriority(ProjectPriority priority) {
-		this.priority = priority;
-	}
+	
+	
 	
 }

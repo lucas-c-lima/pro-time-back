@@ -34,8 +34,8 @@ public class UserServiceImpl implements UsersService{
 	}
 
 	@Override
-	public List<UsersDTO> findUserByName(String valor) {
-		return usersRepository.findUserByNameContaining(valor).stream().map(UsersDTO::new).toList();
+	public List<UsersDTO> findUserByName(String value) {
+		return usersRepository.findUserByNameContaining(value).stream().map(UsersDTO::new).toList();
 	}
 
 	@Override

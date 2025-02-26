@@ -14,7 +14,7 @@ public interface UsersService {
 
 	UsersDTO findUserById(Integer id);
 
-	List<UsersDTO> findUserByName(String valor);
+	List<UsersDTO> findUserByName(String value);
 
 	UsersDTO updateUser(Integer id, UsersDTOPut user);
 

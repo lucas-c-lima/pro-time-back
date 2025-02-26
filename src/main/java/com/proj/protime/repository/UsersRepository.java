@@ -11,5 +11,5 @@ public interface UsersRepository extends JpaRepository<Users, Integer>{
 
 	UserDetails findByEmail(String email);
 
-	List<Users> findUserByNameContaining(String valor);
+	List<Users> findUserByNameContaining(String value);
 }

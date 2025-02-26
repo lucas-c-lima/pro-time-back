@@ -29,7 +29,7 @@ public class LancamentoHora implements Serializable{
 	
 	@OneToOne
 	@JoinColumn(name = "id_atividade", referencedColumnName = "id", nullable = false)
-	private Atividade id_atividade;
+	private Activities id_activities;
 	
 	@OneToOne
 	@JoinColumn(name = "id_usuario", referencedColumnName = "id", nullable = false)
@@ -54,10 +54,10 @@ public class LancamentoHora implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public LancamentoHora(Atividade id_atividade, Users id_usuario, String descricao,
-			LocalDateTime data_inicio, LocalDateTime data_fim, LocalDateTime data_registro) {
+	public LancamentoHora(Activities id_activities, Users id_usuario, String descricao,
+						  LocalDateTime data_inicio, LocalDateTime data_fim, LocalDateTime data_registro) {
 		super();
-		this.id_atividade = id_atividade;
+		this.id_activities = id_activities;
 		this.id_usuario = id_usuario;
 		this.descricao = descricao;
 		this.data_inicio = data_inicio;
@@ -73,12 +73,12 @@ public class LancamentoHora implements Serializable{
 		this.id = id;
 	}
 
-	public Atividade getId_atividade() {
-		return id_atividade;
+	public Activities getId_atividade() {
+		return id_activities;
 	}
 
-	public void setId_atividade(Atividade id_atividade) {
-		this.id_atividade = id_atividade;
+	public void setId_atividade(Activities id_activities) {
+		this.id_activities = id_activities;
 	}
 
 	public Users getId_usuario() {

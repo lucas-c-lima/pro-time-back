@@ -7,7 +7,7 @@ import com.proj.protime.entity.enums.ProjectStatus;
 
 import java.time.LocalDateTime;
 
-public record ProjectDTO(
+public record ProjectsDTO(
         Integer id,
         String name,
         String description,
@@ -18,7 +18,7 @@ public record ProjectDTO(
         @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss") LocalDateTime creationDate,
         ProjectPriority priority
 ) {
-    public ProjectDTO(com.proj.protime.entity.Projects project) {
+    public ProjectsDTO(com.proj.protime.entity.Projects project) {
         this(
                 project.getId(),
                 project.getName(),

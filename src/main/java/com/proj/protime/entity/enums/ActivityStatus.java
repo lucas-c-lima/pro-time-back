@@ -1,6 +1,6 @@
 package com.proj.protime.entity.enums;
 
-public enum StatusAtividade {
+public enum ActivityStatus {
 	ABERTA,
 	EM_ANDAMENTO,
 	CONCLUIDA,

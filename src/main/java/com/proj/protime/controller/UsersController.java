@@ -33,8 +33,8 @@ public class UsersController {
 	}
 
 	@GetMapping("/name")
-	public ResponseEntity<List<UsersDTO>> findUserByName(@RequestParam String valor){
-		List<UsersDTO> user = usersService.findUserByName(valor);
+	public ResponseEntity<List<UsersDTO>> findUserByName(@RequestParam String value){
+		List<UsersDTO> user = usersService.findUserByName(value);
 		return ResponseEntity.ok().body(user);
 	}
 
