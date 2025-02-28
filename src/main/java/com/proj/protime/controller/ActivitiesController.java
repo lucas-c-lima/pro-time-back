@@ -46,6 +46,7 @@ public class ActivitiesController {
         return ResponseEntity.ok(activitiesService.updateActivity(id, activity));
     }
 
+    //TODO implementar soft delete!!!!
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteActivity(@PathVariable Integer id){
         activitiesService.deleteActivity(id);
