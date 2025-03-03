@@ -25,6 +25,8 @@ public class TokenService {
             String token = JWT.create()
                     .withIssuer("Protime-API")
                     .withSubject(user.getUsername()) // para quem é o token
+                    .withClaim("userId", user.getId())
+                    .withClaim("userProfile", user.getProfile().name())
                     .withExpiresAt(genExpirationDate()) // token expira em 2 horas
                     .sign(algorithm);
             return token;
