@@ -7,6 +7,7 @@ import com.proj.protime.entity.dto.users.UsersDTOPut;
 import com.proj.protime.entity.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.proj.protime.entity.Users;
@@ -18,6 +19,9 @@ public class UserServiceImpl implements UsersService{
 
 	@Autowired
 	private UsersRepository usersRepository;
+
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 
 	private UserMapper userMapper;
 
@@ -42,6 +46,15 @@ public class UserServiceImpl implements UsersService{
 	public UsersDTO updateUser(Integer id, UsersDTOPut user) {
 		Users current = usersRepository.findById(id).orElseThrow(
 				() -> new RuntimeException("User not found"));
+
+		if(user.password() != null){
+			user = new UsersDTOPut(
+				user.name(),
+				user.email(),
+				passwordEncoder.encode(user.password()),
+				user.profile()
+			);
+		}
 
 		UserMapper.INSTANCE.updateUser(current, user);
 
