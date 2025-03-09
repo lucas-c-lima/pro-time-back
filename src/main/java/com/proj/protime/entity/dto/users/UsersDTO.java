@@ -15,7 +15,9 @@ public record UsersDTO(
         String password,
         ProfileUser profile,
         @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss") LocalDateTime creationDate,
-        @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss") LocalDateTime lastLogin
+        @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss") LocalDateTime lastLogin,
+
+        Boolean deleted
 ) {
     public UsersDTO(Users user) {
         this(
@@ -25,7 +27,8 @@ public record UsersDTO(
                 user.getPassword(),
                 user.getProfile(),
                 user.getCreationDate(),
-                user.getLastLogin()
+                user.getLastLogin(),
+                user.isDeleted()
         );
     }
 }
