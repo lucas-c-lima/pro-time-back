@@ -21,6 +21,9 @@ import com.proj.protime.repository.UsersRepository;
 
 import jakarta.validation.Valid;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @RestController
 @RequestMapping("/auth")
 public class AuthenticationController {
@@ -42,6 +45,10 @@ public class AuthenticationController {
 		var userPassword = new UsernamePasswordAuthenticationToken(data.email(), data.password()); // cria um token com email e senha
 
 		var auth = this.authenticationManager.authenticate(userPassword); // autentica o token
+
+		var user = (Users) auth.getPrincipal(); // Logica para alterar o lastlogin
+		user.setLastLogin(LocalDateTime.now());
+		usersRepository.save(user);
 
 		var token = tokenService.generateToken((Users) auth.getPrincipal()); // gera um token
 
