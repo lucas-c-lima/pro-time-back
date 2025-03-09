@@ -18,5 +18,5 @@ public interface UsersService {
 
 	UsersDTO updateUser(Integer id, UsersDTOPut user);
 
-	ResponseEntity<Void> deleteUser(Integer id);
+	void deleteUser(Integer id);
 }

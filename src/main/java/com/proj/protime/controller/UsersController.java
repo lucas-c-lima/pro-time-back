@@ -38,13 +38,11 @@ public class UsersController {
 		return ResponseEntity.ok().body(user);
 	}
 
-	// TODO AO FAZER A ALTERAÇÃO, COLOCAR A SENHA ENCRIPTADA
 	@PutMapping("/{id}")
 	public ResponseEntity<UsersDTO> updateUser(@PathVariable Integer id, @Valid @RequestBody UsersDTOPut user){
 		return ResponseEntity.ok(usersService.updateUser(id, user));
 	}
 
-	// TODO implementar soft delete!!!!
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> deleteUser(@PathVariable Integer id){
 		usersService.deleteUser(id);

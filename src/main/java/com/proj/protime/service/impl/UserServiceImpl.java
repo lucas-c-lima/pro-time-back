@@ -63,11 +63,10 @@ public class UserServiceImpl implements UsersService{
 	}
 
 	@Override
-	public ResponseEntity<Void> deleteUser(Integer id) {
-		return usersRepository.findById(id)
-			.map(userFound -> {
-				usersRepository.deleteById(id);
-				return ResponseEntity.noContent().<Void>build();
-			}).orElseThrow(() -> new RuntimeException("User not found"));
+	public void deleteUser(Integer id) {
+		Users user = usersRepository.findById(id).orElseThrow(
+				() -> new RuntimeException("User not found"));
+		user.setDeleted(true);
+		usersRepository.save(user);
 	}
 }

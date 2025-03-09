@@ -60,6 +60,9 @@ public class Users implements UserDetails{
 	@Column(name = "ultimo_login")
 	private LocalDateTime lastLogin;
 
+	@Column(name= "inativo", nullable = false)
+	private boolean deleted = false;
+
 	public Users(@NotBlank String name, @NotBlank String email, @NotBlank String password, ProfileUser profile) {
 		this.name = name;
 		this.email = email;
@@ -149,5 +152,13 @@ public class Users implements UserDetails{
 
 	public void setLastLogin(LocalDateTime lastLogin) {
 		this.lastLogin = lastLogin;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 }
