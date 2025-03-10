@@ -10,14 +10,16 @@ public record UsersDTOPut(
         String name,
         String email,
         String password,
-        ProfileUser profile
+        ProfileUser profile,
+        Boolean deleted
 ) {
     public UsersDTOPut(Users user) {
         this(
                 user.getName(),
                 user.getEmail(),
                 user.getPassword(),
-                user.getProfile()
+                user.getProfile(),
+                user.isDeleted()
         );
     }
 }

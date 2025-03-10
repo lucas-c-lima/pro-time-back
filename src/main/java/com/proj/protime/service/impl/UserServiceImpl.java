@@ -52,7 +52,16 @@ public class UserServiceImpl implements UsersService{
 				user.name(),
 				user.email(),
 				passwordEncoder.encode(user.password()),
-				user.profile()
+				user.profile(),
+				user.deleted()
+			);
+		} else {
+			user = new UsersDTOPut(
+				user.name(),
+				user.email(),
+				current.getPassword(),
+				user.profile(),
+				user.deleted()
 			);
 		}
 

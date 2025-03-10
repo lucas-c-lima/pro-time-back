@@ -16,7 +16,6 @@ public record UsersDTO(
         ProfileUser profile,
         @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss") LocalDateTime creationDate,
         @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss") LocalDateTime lastLogin,
-
         Boolean deleted
 ) {
     public UsersDTO(Users user) {
