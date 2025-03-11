@@ -48,6 +48,11 @@ public class ActivitiesServiceImpl implements ActivitiesService {
     }
 
     @Override
+    public List<ActivitiesDTO> findActivitiesByUser(Users user) {
+        return activitiesRepository.findByIdResponsableUser(user).stream().map(ActivitiesDTO::new).toList();
+    }
+
+    @Override
     public ResponseEntity<ActivitiesDTO> createActivity(
             ActivitiesDTOPostPut activity) {
         Projects idProject = projectsRepository.findById(activity.idProjects())

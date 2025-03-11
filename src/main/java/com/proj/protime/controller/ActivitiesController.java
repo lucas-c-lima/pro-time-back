@@ -1,5 +1,6 @@
 package com.proj.protime.controller;
 
+import com.proj.protime.entity.Users;
 import com.proj.protime.entity.dto.activities.ActivitiesDTO;
 import com.proj.protime.entity.dto.activities.ActivitiesDTOPostPut;
 import com.proj.protime.service.ActivitiesService;
@@ -34,6 +35,13 @@ public class ActivitiesController {
     public ResponseEntity<List<ActivitiesDTO>> findActivityByName(@RequestParam String value){
         List<ActivitiesDTO> activity = activitiesService.findActivityByName(value);
         return ResponseEntity.ok().body(activity);
+    }
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<ActivitiesDTO>> getActivitiesByUser(@PathVariable Integer userId){
+        Users user = new Users();
+        user.setId(userId);
+        return ResponseEntity.ok().body(activitiesService.findActivitiesByUser(user));
     }
 
     @PostMapping

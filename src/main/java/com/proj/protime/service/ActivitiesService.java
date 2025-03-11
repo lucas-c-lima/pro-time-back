@@ -1,5 +1,6 @@
 package com.proj.protime.service;
 
+import com.proj.protime.entity.Users;
 import com.proj.protime.entity.dto.activities.ActivitiesDTO;
 import com.proj.protime.entity.dto.activities.ActivitiesDTOPostPut;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,8 @@ public interface ActivitiesService {
     ActivitiesDTO findActivityById(Integer id);
 
     List<ActivitiesDTO> findActivityByName(String value);
+
+    List<ActivitiesDTO> findActivitiesByUser(Users user);
 
     ResponseEntity<ActivitiesDTO> createActivity(ActivitiesDTOPostPut activity);
 
