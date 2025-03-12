@@ -9,5 +9,5 @@ import java.util.List;
 
 
 public interface HoursEntryRepository extends JpaRepository<HoursEntry, Integer>{
-
+    List<HoursEntry> findByIdActivity_Id(Integer activityId);
 }

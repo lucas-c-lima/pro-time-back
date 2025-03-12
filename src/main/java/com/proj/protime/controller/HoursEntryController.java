@@ -32,6 +32,12 @@
 			return ResponseEntity.ok().body(hoursEntry);
 		}
 
+		@GetMapping("/activities/{activityId}")
+		public ResponseEntity<List<HoursEntriesDTO>> findEntryByActivity(@PathVariable Integer activityId){
+			List<HoursEntriesDTO> hoursEntries = hoursEntryService.findEntryByActivity(activityId);
+			return ResponseEntity.ok().body(hoursEntries);
+		}
+
 		// TODO FAZER BUSCAR POR OBJETOS ESPECIFICOS
 
 		@PostMapping

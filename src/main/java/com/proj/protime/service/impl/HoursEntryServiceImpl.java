@@ -41,9 +41,15 @@ public class HoursEntryServiceImpl implements HoursEntryService {
 	}
 
 	@Override
+	public List<HoursEntriesDTO> findEntryByActivity(Integer activityId) {;
+		List<HoursEntry> entries = hoursEntryRepository.findByIdActivity_Id(activityId);
+		return entries.stream().map(HoursEntriesDTO::new).toList();
+	}
+
+	@Override
 	public ResponseEntity<HoursEntriesDTO> createEntry(
 			HoursEntriesDTOPostPut hoursEntry) {
-		Activities idActivity = activitiesRepository.findById(hoursEntry.idActivities())
+		Activities idActivity = activitiesRepository.findById(hoursEntry.idActivity())
 				.orElseThrow(() -> new RuntimeException("Activity not found"));
 		Users idUser = userRepository.findById(hoursEntry.idUser())
 				.orElseThrow(() -> new RuntimeException("User not found"));
@@ -66,7 +72,7 @@ public class HoursEntryServiceImpl implements HoursEntryService {
 
 		HoursEntry current = hoursEntryRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Entry not found"));
-		Activities idActivity = activitiesRepository.findById(hoursEntry.idActivities())
+		Activities idActivity = activitiesRepository.findById(hoursEntry.idActivity())
 				.orElseThrow(() -> new RuntimeException("Activity not found"));
 		Users idUser = userRepository.findById(hoursEntry.idUser())
 				.orElseThrow(() -> new RuntimeException("User not found"));
@@ -94,6 +100,8 @@ public class HoursEntryServiceImpl implements HoursEntryService {
 				return ResponseEntity.noContent().<Void>build();
 		}).orElseThrow(() -> new RuntimeException("Entry not found"));
 	}
+
+
 
 
 }

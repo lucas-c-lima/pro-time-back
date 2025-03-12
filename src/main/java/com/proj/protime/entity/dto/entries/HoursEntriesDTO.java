@@ -18,7 +18,7 @@ public record HoursEntriesDTO(
     public HoursEntriesDTO(com.proj.protime.entity.HoursEntry hoursEntry) {
         this(
                 hoursEntry.getId(),
-                new ActivitiesDTO(hoursEntry.getId_atividade()),
+                new ActivitiesDTO(hoursEntry.getIdActivity()),
                 new UsersDTO(hoursEntry.getIdUsers()),
                 hoursEntry.getDescription(),
                 hoursEntry.getStartDate(),

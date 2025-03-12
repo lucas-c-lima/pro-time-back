@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDateTime;
 
 public record HoursEntriesDTOPostPut(
-        Integer idActivities,
+        Integer idActivity,
         Integer idUser,
         String description,
         @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss") LocalDateTime startDate,

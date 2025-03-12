@@ -22,7 +22,7 @@ public class HoursEntry implements Serializable{
 	
 	@OneToOne
 	@JoinColumn(name = "id_atividade", referencedColumnName = "id", nullable = false)
-	private Activities id_activities;
+	private Activities idActivity;
 	
 	@OneToOne
 	@JoinColumn(name = "id_usuario", referencedColumnName = "id", nullable = false)
@@ -53,7 +53,7 @@ public class HoursEntry implements Serializable{
 	public HoursEntry(Activities idActivity, Users idUsers, String description,
 					  LocalDateTime startDate, LocalDateTime endDate) {
 		super();
-		this.id_activities = idActivity;
+		this.idActivity = idActivity;
 		this.idUsers = idUsers;
 		this.description = description;
 		this.startDate = startDate;
@@ -68,12 +68,12 @@ public class HoursEntry implements Serializable{
 		this.id = id;
 	}
 
-	public Activities getId_atividade() {
-		return id_activities;
+	public Activities getIdActivity() {
+		return idActivity;
 	}
 
-	public void setId_atividade(Activities id_activities) {
-		this.id_activities = id_activities;
+	public void setIdActivity(Activities idActivity) {
+		this.idActivity = idActivity;
 	}
 
 	public Users getIdUsers() {

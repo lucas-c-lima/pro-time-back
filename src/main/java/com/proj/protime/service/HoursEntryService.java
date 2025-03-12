@@ -18,4 +18,6 @@ public interface HoursEntryService {
 	HoursEntriesDTO updateEntry(Integer id, HoursEntriesDTOPostPut hoursEntry);
 
 	ResponseEntity<Void> deleteEntry(Integer id);
+
+	List<HoursEntriesDTO> findEntryByActivity(Integer activityId);
 }
