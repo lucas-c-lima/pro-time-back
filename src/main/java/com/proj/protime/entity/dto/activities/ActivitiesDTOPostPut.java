@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 public record ActivitiesDTOPostPut(
 
-        Integer idProjects,
+        Integer projectId,
         String name,
         String description,
         @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss") LocalDateTime startDate,

@@ -23,7 +23,7 @@ public class Activities implements Serializable{
 	
 	@OneToOne
 	@JoinColumn(name = "id_projeto", referencedColumnName = "id", nullable = false)
-	private Projects id_projects;
+	private Projects projectId;
 	
 	@NotBlank
 	@Column(name = "nome" ,nullable = false)
@@ -60,7 +60,7 @@ public class Activities implements Serializable{
 
 	public Activities( String name, String description,
 					  LocalDateTime startDate, LocalDateTime endDate, ActivityStatus status,
-					   Projects idProject,
+					   Projects projectId,
 					   Users idResponsableUser) {
 		super();
 		this.name = name;
@@ -68,7 +68,7 @@ public class Activities implements Serializable{
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.status = status;
-		this.id_projects = idProject;
+		this.projectId = projectId;
 		this.idResponsableUser = idResponsableUser;
 	}
 
@@ -80,12 +80,12 @@ public class Activities implements Serializable{
 		this.id = id;
 	}
 
-	public Projects getIdProjects() {
-		return id_projects;
+	public Projects getProjectId() {
+		return projectId;
 	}
 
-	public void setIdProjects(Projects id_projects) {
-		this.id_projects = id_projects;
+	public void setProjectId(Projects projectId) {
+		this.projectId = projectId;
 	}
 
 	public String getName() {

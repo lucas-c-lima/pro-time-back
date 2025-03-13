@@ -53,9 +53,14 @@ public class ActivitiesServiceImpl implements ActivitiesService {
     }
 
     @Override
+    public List<ActivitiesDTO> findActivitiesByProject(Projects projectId) {
+        return activitiesRepository.findByProjectId(projectId).stream().map(ActivitiesDTO::new).toList();
+    }
+
+    @Override
     public ResponseEntity<ActivitiesDTO> createActivity(
             ActivitiesDTOPostPut activity) {
-        Projects idProject = projectsRepository.findById(activity.idProjects())
+        Projects idProject = projectsRepository.findById(activity.projectId())
                 .orElseThrow(() -> new RuntimeException("Project not found"));
         Users responsableUser = userRepository.findById(activity.idResponsableUser())
                 .orElseThrow(() -> new RuntimeException("User not found"));
@@ -80,7 +85,7 @@ public class ActivitiesServiceImpl implements ActivitiesService {
     ) {
         Activities current = activitiesRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Activity not found"));
-        Projects idProject = projectsRepository.findById(activity.idProjects())
+        Projects idProject = projectsRepository.findById(activity.projectId())
                 .orElseThrow(() -> new RuntimeException("Project not found"));
         Users responsableUser = userRepository.findById(activity.idResponsableUser())
                 .orElseThrow(() -> new RuntimeException("User not found"));

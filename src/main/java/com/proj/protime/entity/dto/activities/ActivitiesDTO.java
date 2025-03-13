@@ -21,7 +21,7 @@ public record ActivitiesDTO(
     public ActivitiesDTO(com.proj.protime.entity.Activities activity) {
         this(
                 activity.getId(),
-                new ProjectsDTO(activity.getIdProjects()),
+                new ProjectsDTO(activity.getProjectId()),
                 activity.getName(),
                 activity.getDescription(),
                 activity.getStartDate(),
