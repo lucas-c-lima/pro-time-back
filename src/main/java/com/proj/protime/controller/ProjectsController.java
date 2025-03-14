@@ -37,7 +37,6 @@ public class ProjectsController {
 		return ResponseEntity.ok().body(project);
 	}
 
-	// TODO VERIFICAR COMO ARRUMAR PARA PUXAR APENAS O DIA E NÃO O HORÁRIO;
 	@PostMapping
 	public ResponseEntity<ProjectsDTO> createProject(@Valid @RequestBody ProjectsDTOPostPut project){
 		return projectsService.createProject(project);

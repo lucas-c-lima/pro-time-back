@@ -5,6 +5,7 @@ import java.util.List;
 import com.proj.protime.entity.Users;
 import com.proj.protime.entity.dto.projects.ProjectsDTO;
 import com.proj.protime.entity.dto.projects.ProjectsDTOPostPut;
+import com.proj.protime.entity.enums.ProjectStatus;
 import com.proj.protime.entity.mapper.ProjectMapper;
 import com.proj.protime.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,10 +92,10 @@ public class ProjectsServiceImpl implements ProjectsService {
 
 	@Override
 	public ResponseEntity<Void> deleteProject(Integer id) {
-		return projectsRepository.findById(id)
-			.map(projectFound -> {
-				projectsRepository.deleteById(id);
-				return ResponseEntity.noContent().<Void>build();
-			}).orElseThrow(() -> new RuntimeException("Project not found"));
+		Projects projectFound = projectsRepository.findById(id)
+			.orElseThrow(() -> new RuntimeException("Project not found"));
+		projectFound.setStatus(ProjectStatus.CANCELADO);
+		Projects updatedProject = projectsRepository.save(projectFound);
+		return ResponseEntity.noContent().build();
 	}
 }
