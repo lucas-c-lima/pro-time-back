@@ -47,6 +47,12 @@ public class HoursEntryServiceImpl implements HoursEntryService {
 	}
 
 	@Override
+	public List<HoursEntriesDTO> findEntriesByUsers(Integer userId) {
+		List<HoursEntry> entries = hoursEntryRepository.findByIdUsers_Id(userId);
+		return entries.stream().map(HoursEntriesDTO::new).toList();
+	}
+
+	@Override
 	public ResponseEntity<HoursEntriesDTO> createEntry(
 			HoursEntriesDTOPostPut hoursEntry) {
 		Activities idActivity = activitiesRepository.findById(hoursEntry.idActivity())

@@ -38,6 +38,12 @@
 			return ResponseEntity.ok().body(hoursEntries);
 		}
 
+		@GetMapping("/users/{userId}")
+		public ResponseEntity<List<HoursEntriesDTO>> findEntriesByUserId(@PathVariable Integer userId) {
+			List<HoursEntriesDTO> hoursEntries = hoursEntryService.findEntriesByUsers(userId);
+			return ResponseEntity.ok().body(hoursEntries);
+		}
+
 		// TODO FAZER BUSCAR POR OBJETOS ESPECIFICOS
 
 		@PostMapping

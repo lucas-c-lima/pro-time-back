@@ -20,4 +20,6 @@ public interface HoursEntryService {
 	ResponseEntity<Void> deleteEntry(Integer id);
 
 	List<HoursEntriesDTO> findEntryByActivity(Integer activityId);
+
+	List<HoursEntriesDTO> findEntriesByUsers(Integer userId);
 }
