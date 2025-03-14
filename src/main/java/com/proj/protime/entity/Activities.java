@@ -53,6 +53,9 @@ public class Activities implements Serializable{
 	@CreationTimestamp
 	@Column(name = "data_criacao")
 	private LocalDateTime creationDate;
+
+	@Column(name="excluida")
+	private boolean deleted = false;
 	
 	public Activities() {
 		// TODO Auto-generated constructor stub
@@ -70,6 +73,7 @@ public class Activities implements Serializable{
 		this.status = status;
 		this.projectId = projectId;
 		this.idResponsableUser = idResponsableUser;
+		this.deleted = false;
 	}
 
 	public Integer getId() {
@@ -143,7 +147,12 @@ public class Activities implements Serializable{
 	public void setCreationDate(LocalDateTime creationDate) {
 		this.creationDate = creationDate;
 	}
-	
-	
-	
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
 }

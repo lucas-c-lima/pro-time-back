@@ -62,7 +62,7 @@ public class ActivitiesServiceImpl implements ActivitiesService {
             ActivitiesDTOPostPut activity) {
         Projects idProject = projectsRepository.findById(activity.projectId())
                 .orElseThrow(() -> new RuntimeException("Project not found"));
-        Users responsableUser = userRepository.findById(activity.idResponsableUser())
+        Users idResponsableUser = userRepository.findById(activity.idResponsableUser())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         Activities newActivity = new Activities(
@@ -72,7 +72,7 @@ public class ActivitiesServiceImpl implements ActivitiesService {
             activity.endDate(),
             activity.status(),
             idProject,
-            responsableUser
+            idResponsableUser
         );
 
         Activities saved = activitiesRepository.save(newActivity);
@@ -109,10 +109,10 @@ public class ActivitiesServiceImpl implements ActivitiesService {
 
     @Override
     public ResponseEntity<Void> deleteActivity(Integer id) {
-        return activitiesRepository.findById(id)
-            .map(activityFound -> {
-                activitiesRepository.deleteById(id);
-                return ResponseEntity.noContent().<Void>build();
-            }).orElseThrow(() -> new RuntimeException("Activity not found"));
+        Activities activity = activitiesRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Activity not found"));
+        activity.setDeleted(true);
+        activitiesRepository.save(activity);
+        return ResponseEntity.noContent().build();
     }
 }
