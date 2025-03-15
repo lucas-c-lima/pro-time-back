@@ -2,9 +2,11 @@ package com.proj.protime.controller;
 
 import java.util.List;
 
+import com.proj.protime.entity.Users;
 import com.proj.protime.entity.dto.projects.ProjectsDTO;
 import com.proj.protime.entity.dto.projects.ProjectsDTOPostPut;
 import jakarta.validation.Valid;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,6 +38,14 @@ public class ProjectsController {
 		List<ProjectsDTO> project = projectsService.findProjectByName(value);
 		return ResponseEntity.ok().body(project);
 	}
+
+	@GetMapping("/users/{userId}")
+	public ResponseEntity<List<ProjectsDTO>> findProjectByUser(@PathVariable Integer userId){
+		Users user = new Users();
+		user.setId(userId);
+		return ResponseEntity.ok().body(projectsService.findProjectByUser(user));
+	}
+
 
 	@PostMapping
 	public ResponseEntity<ProjectsDTO> createProject(@Valid @RequestBody ProjectsDTOPostPut project){

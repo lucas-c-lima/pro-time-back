@@ -2,6 +2,7 @@ package com.proj.protime.service;
 
 import java.util.List;
 
+import com.proj.protime.entity.Users;
 import com.proj.protime.entity.dto.projects.ProjectsDTO;
 import com.proj.protime.entity.dto.projects.ProjectsDTOPostPut;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,8 @@ public interface ProjectsService {
 	ProjectsDTO findProjectById(Integer id);
 
 	List<ProjectsDTO> findProjectByName(String value);
+
+	List<ProjectsDTO> findProjectByUser(Users user);
 
 	ProjectsDTO updateProject(Integer id, ProjectsDTOPostPut project);
 

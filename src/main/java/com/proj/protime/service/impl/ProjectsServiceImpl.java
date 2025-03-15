@@ -44,6 +44,11 @@ public class ProjectsServiceImpl implements ProjectsService {
 	}
 
 	@Override
+	public List<ProjectsDTO> findProjectByUser(Users user) {
+		return projectsRepository.findByIdResponsableUser(user).stream().map(ProjectsDTO::new).toList();
+	}
+
+	@Override
 	public ProjectsDTO updateProject(
 			Integer id, ProjectsDTOPostPut project
 	) {
