@@ -1,5 +1,6 @@
 package com.proj.protime.infra.security;
 
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,9 +13,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 
 import com.proj.protime.entity.enums.ProfileUser;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -41,14 +44,29 @@ public class SecurityConfigurations {
 						.requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll() // SWAGGER
 						.requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
 						.requestMatchers(HttpMethod.POST, "/auth/register").hasAuthority(ProfileUser.ADMIN.name())
-//						.requestMatchers("/users/**").permitAll()
+			    		// ADMIN
+						.requestMatchers(HttpMethod.POST,
+								"/projects/**",
+										"/activities/**").hasAuthority(ProfileUser.ADMIN.name())
+						.requestMatchers(HttpMethod.PUT,
+								"/projects/**",
+										"/activities/**").hasAuthority(ProfileUser.ADMIN.name())
+						.requestMatchers(HttpMethod.DELETE,
+								"/projects/**",
+										"/activities/**").hasAuthority(ProfileUser.ADMIN.name())
 						.anyRequest().authenticated()
 
+				)
+				.exceptionHandling(exeception -> exeception
+						.authenticationEntryPoint(authenticationEntryPoint())
+						.accessDeniedHandler(accessDeniedHandler())
 				)
 				.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
 				.build();
 	}
-	
+
+
+
 	// pegar a instancia
 	@Bean
 	public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
@@ -74,4 +92,23 @@ public class SecurityConfigurations {
 
 		return source;
 	}
+
+	@Bean //Erro de autenticação
+	public AuthenticationEntryPoint authenticationEntryPoint() {
+		return (request, response, authException) -> {
+			response.setContentType("application/json");
+			response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+			response.getOutputStream().println("{ \"error\": \"" + authException.getMessage() + "\" }");
+		};
+	}
+
+	@Bean //Acesso negado
+	public AccessDeniedHandler accessDeniedHandler() {
+		return (request, response, accessDeniedException) -> {
+			response.setContentType("application/json");
+			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+			response.getOutputStream().println("{ \"error\": \"" + accessDeniedException.getMessage() + "\" }");
+		};
+	}
+
 }

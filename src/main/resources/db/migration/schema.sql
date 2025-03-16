@@ -1,0 +1,54 @@
+--CREATE TABLE IF NOT EXISTS usuarios (
+--    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+--    nome varchar(255) NOT NULL,
+--    email varchar(255) NOT NULL UNIQUE,
+--    senha varchar(255) NOT NULL,
+--    data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
+--    ultimo_login DATETIME DEFAULT CURRENT_TIMESTAMP,
+--    perfil ENUM('ADMIN', 'USUARIO') NOT NULL,
+--    inativo boolean NOT NULL,
+--)
+--CREATE TABLE IF NOT EXISTS projeto (
+--    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+--    nome varchar(255) NOT NULL,
+--    descricao varchar(255) DEFAULT NULL,
+--    data_inicio DATETIME NOT NULL,
+--    data_fim DATETIME NOT NULL,
+--    status ENUM('PLANEJADO', 'EM_ANDAMENTO', 'CONCLUIDO', 'CANCELADO') DEFAULT NULL,
+--    id_usuario_responsavel int DEFAULT NULL,
+--    data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
+--    prioridade ENUM('ALTA', 'MEDIA', 'BAIXA') NOT NULL,,
+--    FOREIGN KEY (id_usuario_responsavel) REFERENCES usuarios(id)
+--)
+--
+--CREATE TABLE IF NOT EXISTS atividades (
+--    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+--    id_projeto int NOT NULL,
+--    nome varchar(255) NOT NULL,
+--    descricao varchar(255) DEFAULT NULL,
+--    data_inicio DATETIME NOT NULL,
+--    data_fim DATETIME NOY NULL,
+--    status ENUM('ABERTA', 'EM_ANDAMENTO', 'CONCLUIDA', 'PAUSADA') NOT NULL,
+--    id_usuario_responsavel int NOT NULL,
+--    data_criacao DATETIME NULL CURRENT_TIMESTAMP,
+--    excluida boolean NOT NULL,
+--    data_modificacao timestamp NULL DEFAULT NULL,
+--    FOREIGN KEY (id_projeto) REFERENCES projetos(id),
+--    FOREIGN KEY (id_usuario_responsavel) REFERENCES usuarios(id)
+--)
+--
+-- CREATE TABLE IF NOT EXISTS lancamentos_horas (
+--    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+--    id_atividade int NOT NULL,
+--    id_usuario int NOT NULL,
+--    descricao varchar(255) NOT NULL,
+--    data_inicio DATETIME NOT NULL,
+--    data_fim DATETIME NOT NULL,
+--    data_registro datetime(6) NOT NULL,
+--    KEY id_atividade (id_atividade),
+--    KEY id_usuario (id_usuario),
+--    FOREIGN KEY (id_atividade) REFERENCES atividades(id),
+--    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+--  )
+--
+--

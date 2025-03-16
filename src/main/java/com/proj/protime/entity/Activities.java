@@ -21,7 +21,7 @@ public class Activities implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "id_projeto", referencedColumnName = "id", nullable = false)
 	private Projects projectId;
 	

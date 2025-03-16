@@ -1,0 +1,56 @@
+
+--INSERT INTO atividades (id_projeto, nome, descricao, data_inicio, data_fim, status, id_usuario_responsavel, excluida)
+--VALUES
+--(1, 'Levantamento de Requisitos', 'Análise de requisitos do sistema de gerenciamento de estoque.', '2025-01-10 10:00:00', '2025-01-15 18:00:00', 'CONCLUIDA', 3, FALSE),
+--(1, 'Desenvolvimento de Backend', 'Desenvolvimento da API para integração com o sistema de estoque.', '2025-01-16 09:00:00', '2025-02-15 18:00:00', 'EM_ANDAMENTO', 2, FALSE),
+--(1, 'Teste de Performance', 'Realização de testes de performance no sistema de estoque.', '2025-03-01 09:00:00', '2025-03-10 18:00:00', 'ABERTA', 4, FALSE),
+--(2, 'Desenvolvimento de Tela de Login', 'Criação da tela de login para o aplicativo móvel de delivery.', '2025-02-15 08:30:00', '2025-02-20 17:00:00', 'CONCLUIDA', 5, FALSE),
+--(2, 'Integração com Banco de Dados', 'Integração do aplicativo com o banco de dados de pedidos.', '2025-02-21 09:00:00', '2025-03-10 18:00:00', 'EM_ANDAMENTO', 6, FALSE),
+--(2, 'Testes de Funcionalidade', 'Execução de testes de funcionalidade no app de delivery.', '2025-03-15 09:00:00', '2025-03-25 18:00:00', 'ABERTA', 3, FALSE),
+--(3, 'Desenvolvimento do Carrinho de Compras', 'Desenvolvimento da funcionalidade do carrinho de compras para a plataforma.', '2025-03-01 08:00:00', '2025-03-10 17:00:00', 'ABERTA', 7, FALSE),
+--(3, 'Integração com Sistemas de Pagamento', 'Integração do sistema de pagamentos com plataformas externas.', '2025-03-11 09:00:00', '2025-04-15 18:00:00', 'EM_ANDAMENTO', 8, FALSE),
+--(4, 'Levantamento de Sistemas', 'Levantamento dos sistemas que precisam ser integrados.', '2025-01-20 09:00:00', '2025-01-25 18:00:00', 'CONCLUIDA', 2, FALSE),
+--(4, 'Desenvolvimento de API de Integração', 'Desenvolvimento da API para integração entre sistemas ERP e CRM.', '2025-01-26 08:00:00', '2025-03-15 18:00:00', 'EM_ANDAMENTO', 3, FALSE),
+--(4, 'Testes de Integração', 'Testes finais de integração dos sistemas.', '2025-03-16 09:00:00', '2025-03-30 18:00:00', 'ABERTA', 4, FALSE),
+--(5, 'Estudo de Requisitos de Segurança', 'Análise dos requisitos de segurança para o sistema de pagamento.', '2025-01-05 10:00:00', '2025-01-15 17:00:00', 'PAUSADA', 9, FALSE),
+--(5, 'Implementação de Criptografia', 'Desenvolvimento do módulo de criptografia para segurança de transações.', '2025-01-16 08:00:00', '2025-02-28 18:00:00', 'PAUSADA', 10, FALSE),
+--(6, 'Planejamento de API', 'Planejamento e definição das rotas da API.', '2025-02-01 09:00:00', '2025-02-10 17:00:00', 'CONCLUIDA', 2, FALSE),
+--(6, 'Desenvolvimento da API', 'Desenvolvimento da API para integração com sistemas externos.', '2025-02-11 08:00:00', '2025-03-01 18:00:00', 'EM_ANDAMENTO', 3, FALSE),
+--(6, 'Documentação da API', 'Criação da documentação da API para desenvolvedores externos.', '2025-03-02 09:00:00', '2025-03-15 17:00:00', 'ABERTA', 4, FALSE),
+--(7, 'Análise de Performance', 'Análise de performance atual do banco de dados.', '2025-03-10 08:00:00', '2025-03-15 18:00:00', 'CONCLUIDA', 5, FALSE),
+--(7, 'Ajuste de Índices', 'Ajuste de índices para otimizar consultas no banco de dados.', '2025-03-16 09:00:00', '2025-03-30 18:00:00', 'EM_ANDAMENTO', 6, FALSE),
+--(8, 'Redesign do Layout', 'Desenvolvimento do novo layout para o site institucional.', '2025-03-05 09:00:00', '2025-03-15 18:00:00', 'EM_ANDAMENTO', 7, FALSE),
+--(8, 'Otimização de SEO', 'Otimização do site para melhorar o ranking nos motores de busca.', '2025-03-16 08:00:00', '2025-04-01 17:00:00', 'ABERTA', 8, FALSE),
+--(9, 'Mapeamento de Processos', 'Mapeamento dos processos internos que serão automatizados.', '2025-02-20 08:00:00', '2025-02-25 17:00:00', 'ABERTA', 2, FALSE),
+--(9, 'Desenvolvimento de RPA', 'Desenvolvimento do processo de automação usando RPA.', '2025-02-26 09:00:00', '2025-04-15 18:00:00', 'EM_ANDAMENTO', 3, FALSE),
+--(10, 'Estudo de Viabilidade de Backup em Nuvem', 'Análise e escolha da solução de backup em nuvem.', '2025-01-15 08:00:00', '2025-01-25 17:00:00', 'PAUSADA', 4, FALSE),
+--(10, 'Desenvolvimento de Sistema de Backup', 'Desenvolvimento do sistema de backup automatizado.', '2025-01-26 09:00:00', '2025-03-10 18:00:00', 'PAUSADA', 5, FALSE);
+--
+--
+---- Lançamentos de horas para o projeto "Sistema de Gestão de Estoque"
+--INSERT INTO lancamentos_horas (id_atividade, id_usuario, descricao, data_inicio, data_fim, data_registro)
+--VALUES
+--(1, 3, 'Análise de requisitos do sistema de gerenciamento de estoque.', '2025-01-10 10:00:00', '2025-01-10 17:00:00', '2025-01-10 17:15:00'),
+--(2, 2, 'Desenvolvimento da API para integração com o sistema de estoque.', '2025-01-16 09:00:00', '2025-01-16 18:00:00', '2025-01-16 18:05:00'),
+--(3, 4, 'Realização de testes de performance no sistema de estoque.', '2025-03-01 09:00:00', '2025-03-01 12:00:00', '2025-03-01 12:10:00'),
+--(4, 5, 'Criação da tela de login para o aplicativo móvel de delivery.', '2025-02-15 08:30:00', '2025-02-15 16:30:00', '2025-02-15 16:45:00'),
+--(5, 6, 'Integração do aplicativo com o banco de dados de pedidos.', '2025-02-21 09:00:00', '2025-02-21 18:00:00', '2025-02-21 18:05:00'),
+--(6, 3, 'Execução de testes de funcionalidade no app de delivery.', '2025-03-15 09:00:00', '2025-03-15 13:00:00', '2025-03-15 13:15:00'),
+--(7, 7, 'Desenvolvimento da funcionalidade do carrinho de compras para a plataforma.', '2025-03-01 08:00:00', '2025-03-01 17:00:00', '2025-03-01 17:10:00'),
+--(8, 8, 'Integração do sistema de pagamentos com plataformas externas.', '2025-03-11 09:00:00', '2025-03-11 18:00:00', '2025-03-11 18:15:00'),
+--(9, 2, 'Levantamento dos sistemas que precisam ser integrados.', '2025-01-20 09:00:00', '2025-01-20 18:00:00', '2025-01-20 18:10:00'),
+--(10, 3, 'Desenvolvimento da API para integração entre sistemas ERP e CRM.', '2025-01-26 08:00:00', '2025-01-26 18:00:00', '2025-01-26 18:15:00'),
+--(11, 4, 'Testes finais de integração dos sistemas.', '2025-03-16 09:00:00', '2025-03-16 17:00:00', '2025-03-16 17:05:00'),
+--(12, 9, 'Análise dos requisitos de segurança para o sistema de pagamento.', '2025-01-05 10:00:00', '2025-01-05 15:00:00', '2025-01-05 15:10:00'),
+--(13, 10, 'Desenvolvimento do módulo de criptografia para segurança de transações.', '2025-01-16 08:00:00', '2025-01-16 18:00:00', '2025-01-16 18:05:00'),
+--(14, 2, 'Planejamento e definição das rotas da API.', '2025-02-01 09:00:00', '2025-02-01 12:00:00', '2025-02-01 12:05:00'),
+--(15, 3, 'Desenvolvimento da API para integração com sistemas externos.', '2025-02-11 08:00:00', '2025-02-11 18:00:00', '2025-02-11 18:10:00'),
+--(16, 4, 'Criação da documentação da API para desenvolvedores externos.', '2025-03-02 09:00:00', '2025-03-02 17:00:00', '2025-03-02 17:05:00'),
+--(17, 5, 'Análise de performance atual do banco de dados.', '2025-03-10 08:00:00', '2025-03-10 12:00:00', '2025-03-10 12:05:00'),
+--(18, 6, 'Ajuste de índices para otimizar consultas no banco de dados.', '2025-03-16 09:00:00', '2025-03-16 17:00:00', '2025-03-16 17:10:00');
+--(19, 7, 'Desenvolvimento do novo layout para o site institucional.', '2025-03-05 09:00:00', '2025-03-05 18:00:00', '2025-03-05 18:10:00'),
+--(20, 8, 'Otimização do site para melhorar o ranking nos motores de busca.', '2025-03-16 08:00:00', '2025-03-16 17:00:00', '2025-03-16 17:05:00'),
+--(21, 2, 'Mapeamento dos processos internos que serão automatizados.', '2025-02-20 08:00:00', '2025-02-20 16:00:00', '2025-02-20 16:05:00'),
+--(22, 3, 'Desenvolvimento do processo de automação usando RPA.', '2025-02-26 09:00:00', '2025-02-26 18:00:00', '2025-02-26 18:10:00'),
+--(23, 4, 'Análise e escolha da solução de backup em nuvem.', '2025-01-15 08:00:00', '2025-01-15 17:00:00', '2025-01-15 17:10:00'),
+--(24, 5, 'Desenvolvimento do sistema de backup automatizado.', '2025-01-26 09:00:00', '2025-01-26 18:00:00', '2025-01-26 18:15:00');

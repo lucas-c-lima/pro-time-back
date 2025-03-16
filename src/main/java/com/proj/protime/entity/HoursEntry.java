@@ -20,11 +20,11 @@ public class HoursEntry implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "id_atividade", referencedColumnName = "id", nullable = false)
 	private Activities idActivity;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "id_usuario", referencedColumnName = "id", nullable = false)
 	private Users idUsers;
 
